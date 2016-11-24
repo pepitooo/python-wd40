@@ -6,7 +6,7 @@ import time
 from wd40.expire_fifo import ExpireArrow, ExpireDict, ExpireFifo
 
 
-class TestDeadManAlarm(TestCase):
+class TestExpireFifo(TestCase):
 
     def test_not_yet_expire(self):
         factory = arrow.ArrowFactory(ExpireArrow)
@@ -57,6 +57,9 @@ class TestDeadManAlarm(TestCase):
         assert 2 == expire_list.pop()
         assert 3 == expire_list.pop()
         assert expire_list.is_empty()
+
+
+class TestExpireDict(TestCase):
 
     def test_expire_dict_as_normal_dict(self):
         expire_dict = ExpireDict(expire_s=10)
